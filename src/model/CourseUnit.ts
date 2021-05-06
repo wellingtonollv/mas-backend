@@ -1,21 +1,29 @@
-import {Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn} from 'typeorm';
+import {Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn} from 'typeorm'
 import {v4 as uuid} from 'uuid';
 import { Activy } from './Activy';
 
-
 class CourseUnit {
 
-    constructor() {
+    constructor(){
         if(!this.id){
-            this.id=uuid()
+            this.id = uuid()
         }
     }
 
-    readonly id: string
-    
-    @OneToMany(()=> Activy, activy => activy.course_unit)
-    activies: Activy[]
-    
+    @PrimaryColumn()
+    readonly id:string;
+
+    @Column()
+    name:string;
+
+    @Column()
+    description:string;
+
+    @CreateDateColumn()
+    created_at:Date;
+
+    @OneToMany(() => Activy, activy => activy.course_unit)
+    activities: Activy[]
 }
 
 export {CourseUnit}
