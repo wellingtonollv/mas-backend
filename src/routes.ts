@@ -1,18 +1,23 @@
 import { Router } from "express"
+import {UserController} from './controller/UserController';
+import {ActivyController} from './controller/ActivyController';
+import {CourseUnitController} from './controller/CourseUnityController';
+import {AuthenticateController } from './controller/AuthenticateController';
+import authenticated from './middlewares/authenticated';
 
-const routes = Router()
 
-routes.post("/user", (request, response) => {
-	const { name, email, password } = request.body
-	const user = {
-		name: String,
-		email: String,
-		password: String,
-	}
-})
+const userController = new UserController();
+const activyController = new ActivyController();
+const courseUnitController = new CourseUnitController();
+const authenticateController = new AuthenticateController();
 
-routes.post('/user', ()=> console.log('User'))
-routes.post('/activy', ()=> console.log('activy'))
-routes.post('/courseunit', ()=> console.log('course'))
+const routes = Router();
+
+
+routes.post('/user', userController.create);
+routes.post('/auth', authenticateController.create);
+routes.post('/activy', activyController.create);
+routes.post('/courseunit',  courseUnitController.create);
+
 
 export default routes
