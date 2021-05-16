@@ -14,10 +14,10 @@ const authenticateController = new AuthenticateController();
 const routes = Router();
 
 
-routes.post('/user', userController.create);
+routes.post('/user', authenticated, userController.create);
 routes.post('/auth', authenticateController.create);
-routes.post('/activy', activyController.create);
-routes.post('/courseunit',  courseUnitController.create);
+routes.post('/activy', authenticated, activyController.create);
+routes.post('/courseunit', authenticated, courseUnitController.create);
 
 
 export default routes
