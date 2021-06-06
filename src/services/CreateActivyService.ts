@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { Activy } from '../model/Activy';
+import { Activy } from '../models/Activy';
 
 interface ActivyData {
     name: string;
@@ -9,15 +9,15 @@ interface ActivyData {
 
 class CreateActivyService {
     
-    async execute({name,activy_date,course_unit_id}:ActivyData) {
+    public async execute({name,activy_date,course_unit_id}:ActivyData) {
 
         const activyRepository = getRepository(Activy);
 
-        const activy = {
+        const activy = activyRepository.create({
             name,
             activy_date,
             course_unit_id
-        };
+        });
 
         await activyRepository.save(activy);
 

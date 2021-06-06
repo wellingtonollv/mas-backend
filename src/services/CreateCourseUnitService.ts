@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { CourseUnit } from '../model/CourseUnit';
+import { CourseUnit } from '../models/CourseUnit';
 
 interface CourseUnitData {
     name: string;
@@ -8,14 +8,14 @@ interface CourseUnitData {
 
 class CreateCourseUnitService {
     
-    async execute({name,description}:CourseUnitData) {
+    public async execute({name,description}:CourseUnitData) {
 
         const courseUnitRepository = getRepository(CourseUnit);
 
-        const courseUnit = {
+        const courseUnit = courseUnitRepository.create({
             name,
             description
-        };
+        });
 
         await courseUnitRepository.save(courseUnit);
 

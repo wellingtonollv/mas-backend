@@ -1,11 +1,13 @@
+import { O_NOFOLLOW } from "node:constants";
+import { normalize } from "node:path";
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateActivies1620532134767 implements MigrationInterface {
+export class CreateUsers1619826082027 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name:"activies",
+                name:"users",
                 columns: [
                     {
                         name:"id",
@@ -17,11 +19,11 @@ export class CreateActivies1620532134767 implements MigrationInterface {
                         type:"varchar"
                     },
                     {
-                        name:"activity_date",
-                        type:"date"
+                        name:"email",
+                        type:"varchar"
                     },
                     {
-                        name:"course_unit_id",
+                        name:"password",
                         type:"varchar"
                     },
                     {
@@ -35,7 +37,7 @@ export class CreateActivies1620532134767 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("activities");
+        await queryRunner.dropTable("users");
     }
 
 }
