@@ -1,22 +1,22 @@
-import {getRepository} from 'typeorm';
-import {Activy} from '../models/Activy';
+import { getRepository } from 'typeorm';
+import { Activy } from '../models/Activy';
 
 interface ActivyData {
     name: string;
-    activy_date: string;
+    activity_date: string;
     grade: number;
     courseUnitId: string;
 }
 
 class CreateActivyService {
-
-    async execute({name,activy_date,grade, courseUnitId}:ActivyData) {
+    
+    async execute({name, activity_date, grade, courseUnitId}:ActivyData) {
 
         const activyRepository = getRepository(Activy);
 
         const activy = activyRepository.create({
             name,
-            activy_date,
+            activity_date,
             grade,
             courseUnitId
         });
@@ -24,7 +24,6 @@ class CreateActivyService {
         await activyRepository.save(activy);
 
         return activy;
-
     }
 }
 

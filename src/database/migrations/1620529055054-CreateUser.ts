@@ -2,7 +2,7 @@ import { O_NOFOLLOW } from "node:constants";
 import { normalize } from "node:path";
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateUsers1619826082027 implements MigrationInterface {
+export class CreateUser1620529055054 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(

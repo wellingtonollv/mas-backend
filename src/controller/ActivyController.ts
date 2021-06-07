@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { CreateActivyService } from "../services/CreateActivyService";
-import { GetActiviesService } from "../services/GetActiviesService";
+import { GetActivyService } from "../services/GetActivyService";
 
 class ActivyController {
     async create( request:Request, response:Response){
@@ -16,7 +16,7 @@ class ActivyController {
     async show(request:Request, response:Response) {
         const userId = request.body.user;
 
-        const getActivies = new GetActiviesService();
+        const getActivies = new GetActivyService();
 
         const activies = await getActivies.execute(userId);
 
