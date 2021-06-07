@@ -20,6 +20,6 @@ routes.get('/courseunit', authenticated, courseUnitController.show);
 
 routes.post('/user', userController.create);
 routes.post('/activy', authenticated, activyController.create);
-routes.post('/courseunit', authenticated, courseUnitController.create);
+routes.post('/courseunit', courseUnitController.create);
 
 export default routes;
